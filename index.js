@@ -4,6 +4,7 @@ var session = require("express-session");
 var upload = require("express-fileupload");
 var adminroute = require("./routes/admin");
 var userroute = require("./routes/user");
+require("dotenv");
 var app = express();
 
 app.use(bodyparser.urlencoded({extended:true}));
@@ -19,4 +20,4 @@ app.use("/",userroute);
 app.use("/admin",adminroute);
 
 
-app.listen(1000);
+app.listen( process.env.port || 1000);
