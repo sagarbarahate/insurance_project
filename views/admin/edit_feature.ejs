@@ -1,0 +1,32 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/update_features" method="post" enctype="multipart/form-data">
+    <div class="container-fluide p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-primary">Edit Features</h4>
+                <input  type="hidden" class="form-control" value="<%-features_info.features_id%>" name="features_id" id="features_id">
+            </div>
+            <div class="col-md-6 mt-2">
+                <label for="feature_label">Heading</label>
+                <input  type="text" class="form-control" value="<%-features_info.feature_label%>" name="feature_label" id="feature_label">
+            </div>
+            <div class="col-md-3 mt-2">
+                <label for="feature_icon_image">Icon Image</label>
+                <input  type="file"  class="form-control" name="feature_icon_image" id="feature_icon_image">
+            </div>
+            <div class="col-md-3">
+                <img src="/uploads/<%-features_info.feature_icon_image%>" width="100px" class="border border-dark rounded" alt="">
+            </div>
+            <div class="col-md-12">
+                <label for="feature_details">Features Details</label>
+                <textarea class="form-control" name="feature_details" id="feature_details"><%-features_info.feature_details%></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <%-include("footer.ejs")%>

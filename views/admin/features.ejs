@@ -1,0 +1,70 @@
+
+<%-include("navbar.ejs")%>
+
+<form action="/admin/save_features" method="post" enctype="multipart/form-data">
+    <div class="container-fluide p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Features</h4>
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="feature_label">Heading</label>
+                <input required type="text" class="form-control" name="feature_label" id="feature_label">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="feature_icon_image">Icon Image</label>
+                <input required type="file"  class="form-control" name="feature_icon_image" id="feature_icon_image">
+            </div>
+            <div class="col-md-12 mt-3">
+                <label for="feature_details">Features Details</label>
+                <textarea class="form-control" name="feature_details" id="feature_details"></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <div class="container-fluide mt-5 p-4 bg-white">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <h3>All Features</h3>
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Action</th>
+                    <th>Sr.NO</th>
+                    <th>Heading</th>
+                    <th>Features Details</th>
+                    <th>Icon Image</th>
+                </tr>
+                <% var sr=1; for(i of feature) { %>
+                <tr>
+                    <td>
+                        <a href="/admin/edit_feature/<%-i.features_id%>">
+                        <button class="mt-1 btn btn-primary ">
+                            <i class="align-middle" data-feather="edit"></i>
+                        </button>
+                         </a>
+                         <a href="/admin/delete_feature/<%-i.features_id%>">
+                        <button class="mt-1 btn btn-danger ">
+                            <i class="align-middle" data-feather="trash"></i>
+                        </button>
+                         </a>
+                    </td>
+                    <td><%-sr++%></td>
+                    <td><%-i.feature_label%></td>
+                    <td><%-i.feature_details%></td>
+                    <td>
+                        <img src="/uploads/<%-i.feature_icon_image%>" class="border border-dark rounded" width="100px" alt="">
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+    
+
+
+    <%-include("footer.ejs")%>

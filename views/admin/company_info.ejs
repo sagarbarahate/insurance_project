@@ -1,0 +1,91 @@
+<%- include("navbar.ejs") %>
+
+<form action="/admin/update_company_info" method="post" enctype="multipart/form-data">
+    <div class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Company Information</h4>
+                <input value="<%- company_info.company_info_id %>" required type="hidden" class="form-control" name="company_info_id" id="company_info_id">
+            </div>
+            
+            <!-- Company Name -->
+            <div class="col-md-6 mt-3">
+                <label for="company_name">Company Name</label>
+                <input value="<%- company_info.company_name %>" required type="text" class="form-control" name="company_name" id="company_name">
+            </div>
+
+            <!-- Company Logo -->
+            <div class="col-md-3 mt-3">
+                <label for="company_logo">Company Logo</label>
+                <input type="file" class="form-control" name="company_logo" id="company_logo">
+            </div>
+
+            <div class="col-md-3">
+                <% if (company_info.company_logo) { %>
+                    <img src="/uploads/<%- company_info.company_logo %>" alt="Current Logo" class="img-fluid " style="width: 100px; height: auto;" >
+                <% } %>
+            </div>
+
+            <!-- Company Mobile -->
+            <div class="col-md-6 mt-3">
+                <label for="company_mobile">Company Mobile</label>
+                <input value="<%- company_info.company_mobile %>" required type="text" class="form-control" name="company_mobile" id="company_mobile">
+            </div>
+
+            <!-- Company Email -->
+            <div class="col-md-6 mt-3">
+                <label for="company_email">Company Email</label>
+                <input value="<%- company_info.company_email %>" required type="email" class="form-control" name="company_email" id="company_email">
+            </div>
+
+            <!-- Company Address -->
+            <div class="col-md-6 mt-3">
+                <label for="company_address">Company Address</label>
+                <textarea required class="form-control" name="company_address" id="company_address" rows="2"><%- company_info.company_address %></textarea>
+            </div>
+
+            <!-- Company Sub Details -->
+            <div class="col-md-6 mt-3">
+                <label for="company_sub_details">Company Sub Details</label>
+                <textarea class="form-control" name="company_sub_details" id="company_sub_details" rows="2"><%- company_info.company_sub_details %></textarea>
+            </div>
+
+            <!-- Facebook Link -->
+            <div class="col-md-6 mt-3">
+                <label for="company_fb_link">Facebook Link</label>
+                <input value="<%- company_info.company_fb_link %>" type="url" class="form-control" name="company_fb_link" id="company_fb_link">
+            </div>
+
+            <!-- Instagram Link -->
+            <div class="col-md-6 mt-3">
+                <label for="company_insta_link">Instagram Link</label>
+                <input value="<%- company_info.company_insta_link %>" type="url" class="form-control" name="company_insta_link" id="company_insta_link">
+            </div>
+
+            <!-- LinkedIn Link -->
+            <div class="col-md-6 mt-3">
+                <label for="company_linkedin_link">LinkedIn Link</label>
+                <input value="<%- company_info.company_linkedin_link %>" type="url" class="form-control" name="company_linkedin_link" id="company_linkedin_link">
+            </div>
+
+            <!-- Twitter Link -->
+            <div class="col-md-6 mt-3">
+                <label for="company_twitter_link">Twitter Link</label>
+                <input value="<%- company_info.company_twitter_link %>" type="url" class="form-control" name="company_twitter_link" id="company_twitter_link">
+            </div>
+
+            <!-- WhatsApp Number -->
+            <div class="col-md-6 mt-3">
+                <label for="company_whatsapp_no">WhatsApp Number</label>
+                <input value="<%- company_info.company_whatsapp_no %>" type="text" class="form-control" name="company_whatsapp_no" id="company_whatsapp_no">
+            </div>
+
+            <!-- Save Button -->
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary" type="submit">Update Company Information</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%- include("footer.ejs") %>

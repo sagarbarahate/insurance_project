@@ -1,0 +1,56 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/update_about_counter" method="post" enctype="multipart/form-data">
+    <div class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>About Counter</h4>
+                <input value="<%-about_counter.about_counter_id%>" required type="hidden" class="form-control" name="about_counter_id" id="about_counter_id" >
+            </div>
+
+            <!-- About Counter Image -->
+            <div class="col-md-3 mt-3">
+                <label for="about_counter_image">Counter Image</label>
+                <input type="file" class="form-control" name="about_counter_image" id="about_counter_image">
+            </div>
+
+            <!-- Display current image -->
+            <div class="col-md-3">
+                 <% if (about_counter.about_counter_image) { %>
+                    <img src="/uploads/<%-about_counter.about_counter_image%>" alt="Counter Image" class="img-fluid border border-dark rounded" style="max-width: 150px;">
+                <% } %>
+            </div>
+
+            <!-- Total Insurance Policies -->
+            <div class="col-md-6 mt-3">
+                <label for="total_insurance_policies">Total Insurance Policies</label>
+                <input value="<%-about_counter.total_insurance_policies%>" required type="number" class="form-control" name="total_insurance_policies" id="total_insurance_policies">
+            </div>
+
+            <!-- Total Awards Won -->
+            <div class="col-md-6 mt-3">
+                <label for="total_awards_won">Total Awards Won</label>
+                <input value="<%-about_counter.total_awards_won%>" required type="number" class="form-control" name="total_awards_won" id="total_awards_won">
+            </div>
+
+            <!-- Total Skilled Agents -->
+            <div class="col-md-6 mt-3">
+                <label for="total_skilled_agent">Total Skilled Agents</label>
+                <input value="<%-about_counter.total_skilled_agent%>" required type="number" class="form-control" name="total_skilled_agent" id="total_skilled_agent">
+            </div>
+
+            <!-- Total Team Members -->
+            <div class="col-md-6 mt-3">
+                <label for="total_team_members">Total Team Members</label>
+                <input value="<%-about_counter.total_team_members%>" required type="number" class="form-control" name="total_team_members" id="total_team_members">
+            </div>
+
+            <!-- Save Button -->
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary" type="submit">Update About Counter</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%-include("footer.ejs")%>

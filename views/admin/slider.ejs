@@ -1,0 +1,77 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/save_slider" method="post" enctype="multipart/form-data">
+<div class="container-fluide p-3 bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Slider</h4>
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="slider_heading">Heading</label>
+            <input required type="text" class="form-control" name="slider_heading" id="slider_heading">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="slider_image">Slider Image</label>
+            <input required type="file"  class="form-control" name="slider_image" id="slider_image">
+        </div>
+        <div class="col-md-12 mt-3">
+            <label for="slider_content">Content</label>
+            <textarea class="form-control" name="slider_content" id="slider_content"></textarea>
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="button_text">Button Text</label>
+            <input required type="text" name="button_text" id="button_text" class="form-control">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="button_link">Button Link</label>
+            <input required type="text" name="button_link" id="button_link" class="form-control">
+        </div>
+        <div class="col-md-12 mt-3 text-end">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="container-fluide mt-5 p-4 bg-white">
+    <div class="row">
+        <div class="col-md-12 mb-3"><h3>All Sliders</h3></div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Action</th>
+                <th>Sr.NO</th>
+                <th>Heading</th>
+                <th>Content</th>
+                <th>Button Text</th>
+                <th>Button Link</th>
+                <th>Image</th>
+            </tr>
+            <% var sr=1; for(i of slider) { %>
+            <tr>
+                <td>
+                    <a href="/admin/edit_slider/<%-i.slider_id%>">
+                        <button class="mt-1 btn btn-primary ">
+                        <i class="align-middle" data-feather="edit"></i>
+                        </button>
+                     </a>
+                     <a href="/admin/delete_slider/<%-i.slider_id%>">
+                        <button class="mt-1 btn btn-danger">
+                        <i class="align-middle" data-feather="trash"></i>
+                        </button>
+                     </a>
+                </td>
+                <td><%-sr++%></td>
+                <td><%-i.slider_heading%></td>
+                <td><%-i.slider_content%></td>
+                <td><%-i.button_text%></td>
+                <td><%-i.button_link%></td>
+                <td>
+                    <img src="/uploads/<%-i.slider_image%>" class="border border-dark rounded" width="100px" alt="">
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+
+<%-include("footer.ejs")%>

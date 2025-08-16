@@ -1,0 +1,28 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/update_instagram_link" method="post" enctype="multipart/form-data">
+<div class="container-fluid bg-white p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-primary">Edit Instagram Link</h4>
+            <input required type="hidden" class="form-control" value="<%-insta_info.instagram_images_id%>" name="instagram_images_id" id="instagram_images_id">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="insta_link">Instagram Link</label>
+            <input required type="url" value="<%-insta_info.insta_link%>" class="form-control" name="insta_link" id="insta_link">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label for="insta_image">Instagram Image</label>
+            <input required type="file" value="" class="form-control" name="insta_image" id="insta_image">
+        </div>
+        <div class="col-md-3">
+            <img src="/uploads/<%-insta_info.insta_image%>" class="border border-dark rounded" width="100px" alt="">
+        </div>
+        <div class="col-md-12 mt-3 text-end">
+            <button class="btn btn-primary">Update Instagram Links</button>
+        </div>
+    </div>
+</div>
+</form>
+
+<%-include("footer.ejs")%>

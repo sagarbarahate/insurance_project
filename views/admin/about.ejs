@@ -1,0 +1,49 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/update_about_company" method="post">
+    <div class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>About Company</h4>
+                <input value="<%-about_company.about_company_id%>" required type="hidden" class="form-control" name="about_company_id" id="about_company_id" >
+            </div>
+
+            <!-- About Heading -->
+            <div class="col-md-6 mt-3">
+                <label for="about_heading">Heading</label>
+                <input value="<%-about_company.about_heading%>" required type="text" class="form-control" name="about_heading" id="about_heading" >
+            </div>
+
+            <!-- About Point 1 -->
+            <div class="col-md-6 mt-3">
+                <label for="about_point1">Point 1</label>
+                <input value="<%-about_company.about_point1%>" type="text" class="form-control" name="about_point1" id="about_point1"  >
+            </div>
+
+            <!-- About Point 2 -->
+            <div class="col-md-6 mt-3">
+                <label for="about_point2">Point 2</label>
+                <input value="<%-about_company.about_point2%>" type="text" class="form-control" name="about_point2" id="about_point2"  >
+            </div>
+
+            <!-- About Point 3 -->
+            <div class="col-md-6 mt-3">
+                <label for="about_point3">Point 3</label>
+                <input value="<%-about_company.about_point3%>" type="text" class="form-control" name="about_point3" id="about_point3"  >
+            </div>
+
+             <!-- About Details -->
+             <div class="col-md-6 mt-3">
+                <label for="about_details">Details</label>
+                <textarea required class="form-control" name="about_details" id="about_details" rows="4" ><%-about_company.about_details%></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary" type="submit">Update About</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%-include("footer.ejs")%>

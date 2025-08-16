@@ -1,0 +1,69 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/save_services" method="post" enctype="multipart/form-data">
+    <div class="container-fluide p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Services</h4>
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="service_title"> Service Titel</label>
+                <input required type="text" class="form-control" name="service_title" id="service_title">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="service_image">Service Image</label>
+                <input required type="file"  class="form-control" name="service_image" id="service_image">
+            </div>
+            <div class="col-md-12 mt-3">
+                <label for="service_details">Service Details</label>
+                <textarea class="form-control" name="service_details" id="service_details"></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary">Save Service</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <div class="container-fluide mt-5 p-4 bg-white">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <h3>All Services</h3>
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Action</th>
+                    <th>Sr.NO</th>
+                    <th>Heading</th>
+                    <th>Features Details</th>
+                    <th>Icon Image</th>
+                </tr>
+                <% var sr=1; for(i of services) { %>
+                <tr>
+                    <td>
+                        <a href="/admin/edit_services/<%-i.services_id%>">
+                        <button class="btn btn-primary mt-1">
+                            <i class="align-middle" data-feather="edit"></i>
+                        </button>
+                         </a>
+                         <a href="/admin/delete_services/<%-i.services_id%>">
+                        <button class="btn btn-danger mt-1">
+                            <i class="align-middle" data-feather="trash"></i>
+                        </button>
+                         </a>
+                    </td>
+                    <td><%-sr++%></td>
+                    <td><%-i.service_title%></td>
+                    <td><%-i.service_details%></td>
+                    <td>
+                        <img src="/uploads/<%-i.service_image%>" class="border border-dark rounded" width="100px" alt="">
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+
+
+<%-include("footer.ejs")%>
+                    

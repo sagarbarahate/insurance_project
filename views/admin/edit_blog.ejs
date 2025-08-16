@@ -1,0 +1,55 @@
+<%- include("navbar.ejs") %>
+
+<form action="/admin/update_blog" method="post" enctype="multipart/form-data">
+    <div class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-primary">Edit Blog</h4>
+            </div>
+
+            <!-- Hidden Field for Blog ID -->
+            <input type="hidden" name="blog_id" value="<%-blog_info.blog_id%>">
+
+            <!-- Blog Title -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_title">Blog Title</label>
+                <input required type="text" value="<%-blog_info.blog_title%>" class="form-control" name="blog_title" id="blog_title">
+            </div>
+
+            <!-- Blog Image -->
+            <div class="col-md-3 mt-3">
+                <label for="blog_image">Blog Image</label>
+                <input type="file" class="form-control" name="blog_image" id="blog_image">
+            </div>
+
+            <div class="col-md-3">
+                <img src="/uploads/<%-blog_info.blog_image%>" class="border border-dark rounded" width="100px" alt="">
+            </div>
+
+            <!-- Blog Date -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_date">Blog Date</label>
+                <input type="date" class="form-control" name="blog_date" id="blog_date" value="<%-blog_info.blog_date%>">
+            </div>
+
+            <!-- Blog Post By -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_post_by">Blog Post By</label>
+                <input required type="text" value="<%-blog_info.blog_post_by%>" class="form-control" name="blog_post_by" id="blog_post_by">
+            </div>
+
+            <!-- Blog Details -->
+            <div class="col-md-12 mt-3">
+                <label for="blog_details">Blog Details</label>
+                <textarea required class="form-control" name="blog_details" id="blog_details" rows="3"><%-blog_info.blog_details%></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary" type="submit">Update Blog</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%- include("footer.ejs") %>

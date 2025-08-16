@@ -1,0 +1,41 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/update_testimonial" method="post" enctype="multipart/form-data">
+    <div class="container-fluide p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-primary">Edit Testimonial</h4>
+                <input required type="hidden" class="form-control" name="testimonial_id" id="testimonial_id" value="<%-testimonial_info.testimonial_id%>">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_name">Customer Name</label>
+                <input value="<%-testimonial_info.customer_name%>" required type="text" class="form-control" name="customer_name" id="customer_name">
+            </div>
+            <div class="col-md-3 mt-3">
+                <label for="customer_image">Customer Image</label>
+                <input  type="file"  class="form-control" name="customer_image" id="customer_image">
+            </div>
+            <div class="col-md-3">
+                <img src="/uploads/<%-testimonial_info.customer_image%>" class="border border-dark rounded" width="100px" alt="">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_position">Customer Position</label>
+                <input value="<%-testimonial_info.customer_position%>" required type="text" name="customer_position" id="customer_position" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_review_rating">Customer Review Rating</label>
+                <input value="<%-testimonial_info.customer_review_rating%>" required type="number" name="customer_review_rating" id="customer_review_rating" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_review_details">Customer Review Details</label>
+                <textarea class="form-control" name="customer_review_details" id="customer_review_details"><%-testimonial_info.customer_review_details%></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary">Update Testimonial</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<%-include("footer.ejs")%>
+                    

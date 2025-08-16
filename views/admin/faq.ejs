@@ -1,0 +1,82 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/save_faq" method="post">
+<div class="container-fluid bg-white p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>FAQs</h4>
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="faq_question">Question</label>
+            <input required type="text" class="form-control" name="faq_question" id="faq_question">
+        </div>
+        <div class="col-md-6 mt-3">
+            <label for="faq_answer">Answer</label>
+            <input required type="text" class="form-control" name="faq_answer" id="faq_answer">
+        </div>
+        <div class="col-md-12 mt-3 text-end">
+            <button class="btn btn-primary">Save FAQs</button>
+        </div>
+    </div>
+</div>
+</form>
+
+<form action="/admin/update_faq_image" method="post" enctype="multipart/form-data">
+    <div class="container-fluid mt-2 bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>FAQs Image</h4>
+            </div>
+            <div class="col-md-6 mt-3">
+                <input required type="file" class="form-control" name="faq_img" id="faq_img">
+            </div>
+            <div class="col-md-3">
+                <img src="/uploads/<%-faq_image.faq_img%>" class="border border-dark rounded" width="150px" alt="">
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary mt-1">Update FAQs Image</button>
+            </div>
+        </div>
+    </div>
+</form>
+    
+
+<div class="container-fluide mt-5 p-4 bg-white">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h3>All FAQs</h3>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Action</th>
+                <th>Sr.NO</th>
+                <th>Heading</th>
+                <th>Features Details</th>
+            </tr>
+            <% var sr=1; for(i of faq) { %>
+            <tr>
+                <td>
+                    <a href="/admin/edit_faq/<%-i.faq_id%>">
+                    <button class="btn btn-primary ">
+                        <i class="align-middle" data-feather="edit"></i>
+                    </button>
+                     </a>
+                     <a href="/admin/delete_faq/<%-i.faq_id%>">
+                    <button class="btn btn-danger mt-1">
+                        <i class="align-middle" data-feather="trash"></i>
+                    </button>
+                     </a>
+                </td>
+                <td><%-sr++%></td>
+                <td><%-i.faq_question%></td>
+                <td><%-i.faq_answer%></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+
+
+
+<%-include("footer.ejs")%>
+                    

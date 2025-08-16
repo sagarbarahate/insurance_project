@@ -1,0 +1,79 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/save_testimonial" method="post" enctype="multipart/form-data">
+    <div class="container-fluide p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Testimonial</h4>
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_name">Customer Name</label>
+                <input required type="text" class="form-control" name="customer_name" id="customer_name">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_image">Customer Image</label>
+                <input required type="file"  class="form-control" name="customer_image" id="customer_image">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_position">Customer Position</label>
+                <input required type="text" name="customer_position" id="customer_position" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_review_rating">Customer Review Rating</label>
+                <input required type="number" name="customer_review_rating" id="customer_review_rating" class="form-control">
+            </div>
+            <div class="col-md-6 mt-3">
+                <label for="customer_review_details">Customer Review Details</label>
+                <textarea class="form-control" name="customer_review_details" id="customer_review_details"></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary">Save Testimonial</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div class="container-fluide mt-5 p-4 bg-white">
+        <div class="row">
+            <div class="col-md-12 mb-3"><h3>All Testimonial</h3></div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Action</th>
+                    <th>Sr.NO</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Rating</th>
+                    <th>Details</th>
+                    <th>Image</th>
+                </tr>
+                <% var sr=1; for(i of test) { %>
+                <tr>
+                    <td>
+                        <a href="/admin/edit_testimonial/<%-i.testimonial_id%>">
+                            <button class="btn btn-primary ">
+                            <i class="align-middle" data-feather="edit"></i>
+                            </button>
+                         </a>
+                         <a href="/admin/delete_testimonial/<%-i.testimonial_id%>">
+                            <button class="btn btn-danger mt-1">
+                            <i class="align-middle" data-feather="trash"></i>
+                            </button>
+                         </a>
+                    </td>
+                    <td><%-sr++%></td>
+                    <td><%-i.customer_name%></td>
+                    <td><%-i.customer_position%></td>
+                    <td><%-i.customer_review_rating%></td>
+                    <td><%-i.customer_review_details%></td>
+                    <td>
+                        <img src="/uploads/<%-i.customer_image%>" class="border border-dark rounded" width="100px" alt="">
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+    
+
+<%-include("footer.ejs")%>
+                    

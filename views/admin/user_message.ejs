@@ -1,0 +1,32 @@
+<%-include("navbar.ejs")%>
+<div class="container-fluid mt-5 p-4 bg-white">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h3>Contact Information</h3>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Sr.NO</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Project</th>
+                <th>Subject</th>
+                <th>Message</th>
+            </tr>
+            <% var sr = 1; for(i of contact_info) { %>
+            <tr>
+                <td><%-sr++%></td>
+                <td><%-i.user_name%></td>
+                <td><%-i.user_email%></td>
+                <td><%-i.user_mobile%></td>
+                <td><%-i.user_project%></td>
+                <td><%-i.user_subject%></td>
+                <td><%-i.user_message%></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+
+<%-include("footer.ejs")%>

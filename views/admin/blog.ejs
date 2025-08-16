@@ -1,0 +1,93 @@
+<%- include("navbar.ejs") %>
+
+<form action="/admin/save_blog" method="post" enctype="multipart/form-data">
+    <div class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Create New Blog Post</h4>
+            </div>
+
+            <!-- Blog Title -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_title">Blog Title</label>
+                <input required type="text" class="form-control" name="blog_title" id="blog_title">
+            </div>
+
+            <!-- Blog Image -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_image">Blog Image</label>
+                <input required type="file" class="form-control" name="blog_image" id="blog_image">
+            </div>
+
+            <!-- Blog Date -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_date">Blog Date</label>
+                <input type="date" class="form-control" name="blog_date" id="blog_date">
+            </div>
+
+            <!-- Blog Post By -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_post_by">Blog Post By</label>
+                <input required type="text" class="form-control" name="blog_post_by" id="blog_post_by">
+            </div>
+
+            <!-- Blog Details -->
+            <div class="col-md-6 mt-3">
+                <label for="blog_details">Blog Details</label>
+                <textarea required class="form-control" name="blog_details" id="blog_details" rows="3"></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary" type="submit">Save Blog</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="container-fluid mt-5 p-4 bg-white">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h3>All Blogs</h3>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Action</th>
+                <th>Sr. NO</th>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Date</th>
+                <th>Post By</th>
+                <th>Image</th>
+            </tr>
+            <% var sr = 1; for (i of blog) { %>
+            <tr>
+                <td>
+                    <a href="/admin/edit_blog/<%- i.blog_id %>">
+                        <button class="btn btn-primary mt-1">
+                            <i class="align-middle" data-feather="edit"></i>
+                        </button>
+                    </a>
+                    <a href="/admin/delete_blog/<%- i.blog_id %>">
+                        <button class="btn btn-danger mt-1">
+                            <i class="align-middle" data-feather="trash"></i>
+                        </button>
+                    </a>
+                </td>
+                <td><%- sr++ %></td>
+                <td><%- i.blog_title %></td>
+                <td><%- i.blog_details %></td>
+                <td><%- i.blog_date %></td>
+                <td><%- i.blog_post_by %></td>
+                <td>
+                    <img src="/uploads/<%- i.blog_image %>" class="border border-dark rounded" width="100px" alt="">
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+
+
+
+<%- include("footer.ejs") %>

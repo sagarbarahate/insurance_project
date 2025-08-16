@@ -1,0 +1,131 @@
+<%- include("navbar.ejs") %>
+
+<form action="/admin/save_team" method="post" enctype="multipart/form-data">
+    <div class="container-fluid bg-white p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Team</h4>
+            </div>
+            <!-- Team Member Name -->
+            <div class="col-md-6 mt-3">
+                <label for="team_name">Name</label>
+                <input required type="text" class="form-control" name="team_name" id="team_name" placeholder="Enter team member's name">
+            </div>
+            <!-- Team Member Position -->
+            <div class="col-md-6 mt-3">
+                <label for="team_position">Position</label>
+                <input required type="text" class="form-control" name="team_position" id="team_position" placeholder="Enter team member's position">
+            </div>
+            <!-- Team Member Image -->
+            <div class="col-md-6 mt-3">
+                <label for="team_image">Image</label>
+                <input type="file" class="form-control" name="team_image" id="team_image">
+            </div>
+            <!-- Facebook Link -->
+            <div class="col-md-6 mt-3">
+                <label for="team_fb_link">Facebook Link</label>
+                <input type="url" class="form-control" name="team_fb_link" id="team_fb_link" placeholder="Enter Facebook profile link">
+            </div>
+            <!-- Instagram Link -->
+            <div class="col-md-6 mt-3">
+                <label for="team_insta_link">Instagram Link</label>
+                <input type="url" class="form-control" name="team_insta_link" id="team_insta_link" placeholder="Enter Instagram profile link">
+            </div>
+            <!-- Twitter Link -->
+            <div class="col-md-6 mt-3">
+                <label for="team_twitter_link">Twitter Link</label>
+                <input type="url" class="form-control" name="team_twitter_link" id="team_twitter_link" placeholder="Enter Twitter profile link">
+            </div>
+            <!-- LinkedIn Link -->
+            <div class="col-md-6 mt-3">
+                <label for="team_linkedin_link">LinkedIn Link</label>
+                <input type="url" class="form-control" name="team_linkedin_link" id="team_linkedin_link" placeholder="Enter LinkedIn profile link">
+            </div>
+            <!-- Save Button -->
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary" type="submit">Save Team Member</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="container-fluid mt-5 p-4 bg-white">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <h3>All Team Members</h3>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Image</th>
+                    <th>Facebook</th>
+                    <th>Instagram</th>
+                    <th>Twitter</th>
+                    <th>LinkedIn</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% var sr = 1; for (var i of team) { %>
+                <tr>
+                    <td>
+                        <a href="/admin/edit_team/<%-i.team_members_id%>">
+                            <button class="btn btn-primary mt-1">
+                                <i class="align-middle" data-feather="edit"></i>
+                            </button>
+                        </a>
+                        <a href="/admin/delete_team/<%-i.team_members_id%>">
+                            <button class="btn btn-danger mt-1">
+                                <i class="align-middle" data-feather="trash"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td><%- sr++ %></td>
+                    <td><%- i.team_name %></td>
+                    <td><%- i.team_position %></td>
+                    <td>
+                        <% if (i.team_image) { %>
+                        <img src="/uploads/<%- i.team_image %>" class="border border-dark rounded" alt="Team Image" style="width: 80px; height: 80px;">
+                        <% } else { %>
+                        <span>No Image</span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (i.team_fb_link) { %>
+                        <a href="<%- i.team_fb_link %>" target="_blank">Facebook</a>
+                        <% } else { %>
+                        <span>N/A</span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (i.team_insta_link) { %>
+                        <a href="<%- i.team_insta_link %>" target="_blank">Instagram</a>
+                        <% } else { %>
+                        <span>N/A</span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (i.team_twitter_link) { %>
+                        <a href="<%- i.team_twitter_link %>" target="_blank">Twitter</a>
+                        <% } else { %>
+                        <span>N/A</span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (i.team_linkedin_link) { %>
+                        <a href="<%- i.team_linkedin_link %>" target="_blank">LinkedIn</a>
+                        <% } else { %>
+                        <span>N/A</span>
+                        <% } %>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%- include("footer.ejs") %>
+

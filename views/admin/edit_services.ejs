@@ -1,0 +1,32 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/update_services" method="post" enctype="multipart/form-data">
+    <div class="container-fluide p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-primary">Edit Services</h4>
+                <input  type="hidden" class="form-control" value="<%-services_info.services_id%>" name="services_id" id="services_id">
+            </div>
+            <div class="col-md-6 mt-2">
+                <label for="service_title">Service Title</label>
+                <input  type="text" class="form-control" value="<%-services_info.service_title%>" name="service_title" id="service_title">
+            </div>
+            <div class="col-md-3 mt-2">
+                <label for="service_image">Service Image</label>
+                <input  type="file"  class="form-control" name="service_image" id="service_image">
+            </div>
+            <div class="col-md-3">
+                <img src="/uploads/<%-services_info.service_image%>" width="100px" class="border border-dark rounded" alt="">
+            </div>
+            <div class="col-md-12">
+                <label for="service_details">Service Details</label>
+                <textarea class="form-control" name="service_details" id="service_details"><%-services_info.service_details%></textarea>
+            </div>
+            <div class="col-md-12 mt-3 text-end">
+                <button class="btn btn-primary">Update Service</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <%-include("footer.ejs")%>
